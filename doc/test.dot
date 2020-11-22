@@ -1,0 +1,30 @@
+digraph  {
+  node  [
+    fontname = "Helvetica";
+    fontsize = 16.0;
+  ];
+  edge  [
+    fontname = "Helvetica";
+    fontsize = 16.0;
+  ];
+  fontname = "Helvetica";
+  fontsize = 16.0;
+  A;
+  C;
+  subgraph  {
+    rank = same;
+    B [
+      shape = box;
+    ];
+    D [
+      color = "#FF0000";
+    ];
+  }
+  
+  A -> B [
+    label = "This is a label";
+  ];
+  A -> C;
+  B -> C;
+  B -> D;
+}
