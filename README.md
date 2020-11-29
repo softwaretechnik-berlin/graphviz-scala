@@ -53,14 +53,15 @@ This will yield the following output:
 
 # TODO
 
-* [ ] Proper String escaping
-* [ ] Support for HTML like labels
+* [X] Support for HTML like labels
+    * [ ] Support font attributes
 * [ ] Fix various attribute types e.g. ArrowHead
+* [ ] Deploy to maven central.
+* [ ] Proper String escaping
 * [ ] Add support for node ports
 * [ ] Separate code that is used to generate code
       from the graphviz schema from the actual 
       library.
 * [ ] Convert example into an actual test case.
-* [ ] Deploy to maven central.
 * [ ] Some attribute grouping mechanism that 
       works across different kinds of attributes.
