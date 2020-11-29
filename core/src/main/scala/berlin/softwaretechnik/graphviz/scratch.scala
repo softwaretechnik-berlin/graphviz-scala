@@ -131,8 +131,7 @@ object GraphTest {
         Edge("B", "C"),
         Edge("B", "D"),
       )
-    )
-      .render
+    ).render
 
     println(dotString)
 

@@ -1,5 +1,8 @@
 package berlin.softwaretechnik.graphviz.attributes
 
+import berlin.softwaretechnik.graphviz.attributes.TableHelpers.renderAttributes
+import berlin.softwaretechnik.graphviz.generator.Strings.indent
+
 
 sealed trait ArrowType {}
 object ArrowType  {
@@ -64,11 +67,13 @@ object TableHelpers {
 }
 
 case class Table(attributes: TableAttributes = TableAttributes(), rows: Seq[Seq[Cell]]) extends HtmlLikeLabel {
-  override def toString: String = s"""<TABLE ${TableHelpers.renderAttributes(attributes.toAttributeMap())}>${rows
-    .map(row => s"""<TR>${row.map(cell =>
-      cell.toString
-    )}</TR>""").mkString("")
-  }</TABLE>"""
+  override def toString: String = s"""<TABLE ${renderAttributes(attributes.toAttributeMap())}>\n${
+    indent(rows
+      .map(row => s"""<TR>${row.map(cell =>
+        cell.toString
+      )}</TR>""").mkString("\n")
+    )
+  }\n</TABLE>"""
 }
 
 
