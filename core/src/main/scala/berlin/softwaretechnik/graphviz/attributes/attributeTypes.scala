@@ -58,14 +58,19 @@ case class FontTag(text: Text, attributes: FontTagAttributes) extends TextItem {
 
 case class FontTagAttributes()
 
-
-case class Table(rows: Row*) extends HtmlLikeLabel {
-  override def toString: String = s"""<TABLE>${rows.map(_.toString).mkString("")}</TABLE>"""
+object TableHelpers {
+  def renderAttributes(attributes: Seq[(String, Any)]): String =
+    attributes.map{case (k, v) => s"""${k}="${v}""""}.mkString(" ")
 }
 
-case class Row(cells: Cell*) {
-  override def toString: String = s"""<TR>${cells.map(_.toString).mkString("")}</TR>"""
+case class Table(attributes: TableAttributes = TableAttributes(), rows: Seq[Seq[Cell]]) extends HtmlLikeLabel {
+  override def toString: String = s"""<TABLE ${TableHelpers.renderAttributes(attributes.toAttributeMap())}>${rows
+    .map(row => s"""<TR>${row.map(cell =>
+      cell.toString
+    )}</TR>""").mkString("")
+  }</TABLE>"""
 }
+
 
 case class Cell(htmlLikeLabel: HtmlLikeLabel) {
   override def toString: String = s"<TD>${htmlLikeLabel}</TD>"
