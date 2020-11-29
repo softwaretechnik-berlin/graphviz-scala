@@ -9,7 +9,10 @@ digraph  {
   ];
   fontname = "Helvetica";
   fontsize = 16.0;
-  A;
+  A [
+    label = <<TABLE><TR><TD>Good <I>bye!</I></TD></TR><TR><TD><B><U>Hello!</U></B></TD></TR></TABLE>>;
+    shape = none;
+  ];
   C;
   subgraph  {
     rank = same;

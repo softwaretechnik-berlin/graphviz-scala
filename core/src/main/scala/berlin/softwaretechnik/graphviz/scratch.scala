@@ -1,8 +1,8 @@
 package berlin.softwaretechnik.graphviz
 
 import berlin.softwaretechnik.graphviz.attributes.RankType.same
-import berlin.softwaretechnik.graphviz.attributes.Shape.box
-import berlin.softwaretechnik.graphviz.attributes.{Color, EdgeAttributes, GraphAttributes, LabelString, NodeAttributes, Plain, SubgraphAttributes}
+import berlin.softwaretechnik.graphviz.attributes.Shape.{box, none}
+import berlin.softwaretechnik.graphviz.attributes.{Cell, Color, EdgeAttributes, GraphAttributes, HtmlLikeLabel, LabelString, NodeAttributes, Plain, PlainString, Row, StyleTag, SubgraphAttributes, Table, Text, TextList}
 import berlin.softwaretechnik.graphviz.generator.Strings.indent
 
 trait Renderable {
@@ -25,6 +25,7 @@ trait Renderable {
       // Todo: We want to do proper string escaping:
       case s: String => "\"" + s + "\""
       case p: Plain => "\"" + p.toString + "\""
+      case h: HtmlLikeLabel => "<" + h.toString + ">"
       // Todo We need support for HTML like labels
       case a: Any => a.toString
     }
@@ -112,7 +113,12 @@ object GraphTest {
       nodeDefaults = NodeAttributes(fontname = "Helvetica", fontsize = 16),
       edgeDefaults = EdgeAttributes(fontname = "Helvetica", fontsize = 16),
       elements = Seq(
-        Node("A"),
+        Node("A", NodeAttributes(
+          shape = none,
+          label = Table(
+            Row(Cell(TextList(Seq(PlainString("Good "), StyleTag("I",PlainString("bye!")))))),
+            Row(Cell(StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
+        ))),
         Node("C"),
         SubGraph(attributes = SubgraphAttributes(rank = same), elements = Seq(
           Node("B",  NodeAttributes(shape = box)),

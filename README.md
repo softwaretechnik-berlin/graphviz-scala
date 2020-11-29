@@ -18,7 +18,12 @@ object GraphTest {
       nodeDefaults = NodeAttributes(fontname = "Helvetica", fontsize = 16),
       edgeDefaults = EdgeAttributes(fontname = "Helvetica", fontsize = 16),
       elements = Seq(
-        Node("A"),
+        Node("A", NodeAttributes(
+          shape = none,
+          label = Table(
+            Row(Cell(TextList(Seq(PlainString("Good "), StyleTag("I",PlainString("bye!")))))),
+            Row(Cell(StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
+        ))),
         Node("C"),
         SubGraph(attributes = SubgraphAttributes(rank = same), elements = Seq(
           Node("B",  NodeAttributes(shape = box)),
@@ -40,6 +45,7 @@ object GraphTest {
 
 }
 ~~~
+
 This will yield the following output:
 
 [![](doc/test.svg)](doc/test.dot)
