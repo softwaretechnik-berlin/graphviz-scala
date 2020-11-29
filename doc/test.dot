@@ -11,8 +11,8 @@ digraph  {
   fontsize = 16.0;
   A [
     label = <<TABLE border="0" cellBorder="1" cellPadding="3" cellSpacing="0">
-      <TR>List(<TD>Good <I>bye!</I></TD>)</TR>
-      <TR>List(<TD><B><U>Hello!</U></B></TD>)</TR>
+      <TR>List(<TD >Good <I>bye!</I></TD>)</TR>
+      <TR>List(<TD align="Left"><B><U>Hello!</U></B></TD>)</TR>
     </TABLE>>;
     shape = none;
   ];

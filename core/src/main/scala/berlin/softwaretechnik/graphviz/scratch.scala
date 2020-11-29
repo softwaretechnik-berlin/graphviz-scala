@@ -1,8 +1,9 @@
 package berlin.softwaretechnik.graphviz
 
+import berlin.softwaretechnik.graphviz.attributes.{Color, EdgeAttributes, GraphAttributes, NodeAttributes, Plain, SubgraphAttributes}
 import berlin.softwaretechnik.graphviz.attributes.RankType.same
 import berlin.softwaretechnik.graphviz.attributes.Shape.{box, none}
-import berlin.softwaretechnik.graphviz.attributes.{Cell, Color, EdgeAttributes, GraphAttributes, HtmlLikeLabel, LabelString, NodeAttributes, Plain, PlainString, StyleTag, SubgraphAttributes, Table, TableAttributes, Text, TextList}
+import berlin.softwaretechnik.graphviz.attributes.html.{Align, Cell, HtmlLikeLabel, PlainString, StyleTag, Table, TableAttributes, TableCellAttributes, TextList}
 import berlin.softwaretechnik.graphviz.generator.Strings.indent
 
 trait Renderable {
@@ -119,7 +120,7 @@ object GraphTest {
             TableAttributes(border = 0, cellSpacing = 0, cellBorder = 1, cellPadding = 3),
             Seq(
               Seq(Cell(TextList(Seq(PlainString("Good "), StyleTag("I",PlainString("bye!")))))),
-              Seq(Cell(StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
+              Seq(Cell(TableCellAttributes(align = Align.Left), StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
         )))),
         Node("C"),
         SubGraph(attributes = SubgraphAttributes(rank = same), elements = Seq(

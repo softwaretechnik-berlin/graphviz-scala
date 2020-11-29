@@ -16,7 +16,7 @@
 <text text-anchor="start" x="12.5" y="-204.7391" font-family="Helvetica,sans-Serif" font-size="16.00" fill="#000000">Good </text>
 <text text-anchor="start" x="56.5" y="-204.7391" font-family="Helvetica,sans-Serif" font-style="italic" font-size="16.00" fill="#000000">bye!</text>
 <polygon fill="none" stroke="#000000" points="8.5,-168.5391 8.5,-194.5391 91.5,-194.5391 91.5,-168.5391 8.5,-168.5391"/>
-<text text-anchor="start" x="27.5" y="-178.7391" font-family="Helvetica,sans-Serif" font-weight="bold" text-decoration="underline" font-size="16.00" fill="#000000">Hello!</text>
+<text text-anchor="start" x="12.5" y="-178.7391" font-family="Helvetica,sans-Serif" font-weight="bold" text-decoration="underline" font-size="16.00" fill="#000000">Hello!</text>
 </g>
 <!-- C -->
 <g id="node2" class="node">

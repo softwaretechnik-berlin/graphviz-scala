@@ -1,16 +1,32 @@
-package berlin.softwaretechnik.graphviz.attributes
+package berlin.softwaretechnik.graphviz.attributes.html
 
-/*
-<TABLE
-
->
- */
+import berlin.softwaretechnik.graphviz.attributes.Color
 
 trait Align
+object Align {
+  /** CENTER aligns the object in the center. (Default) */
+  case object Center extends Align
+
+  /** LEFT aligns the object on the left. */
+  case object Left extends Align
+
+  /** RIGHT aligns the object on the right. */
+  case object Right extends Align
+
+  case object Text extends Align
+}
+
 trait VAlign
-/*
-ALIGN="CENTER|LEFT|RIGHT"
+/**
+* MIDDLE aligns the object in the center. (Default)
+* BOTTOM aligns the object on the bottom.
+* TOP aligns the object on the top.
  */
+object VAlign{
+  case object Middle extends VAlign
+  case object Bottom extends VAlign
+  case object Top extends VAlign
+}
 
 trait Columns
 object Columns {
