@@ -21,9 +21,11 @@ object GraphTest {
         Node("A", NodeAttributes(
           shape = none,
           label = Table(
-            Row(Cell(TextList(Seq(PlainString("Good "), StyleTag("I",PlainString("bye!")))))),
-            Row(Cell(StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
-        ))),
+            TableAttributes(border = 0, cellSpacing = 0, cellBorder = 1, cellPadding = 3),
+            Seq(
+              Seq(Cell(TextList(Seq(PlainString("Good "), StyleTag("I",PlainString("bye!")))))),
+              Seq(Cell(StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
+        )))),
         Node("C"),
         SubGraph(attributes = SubgraphAttributes(rank = same), elements = Seq(
           Node("B",  NodeAttributes(shape = box)),
@@ -34,8 +36,7 @@ object GraphTest {
         Edge("B", "C"),
         Edge("B", "D"),
       )
-    )
-      .render
+    ).render
 
     println(dotString)
 
