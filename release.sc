@@ -1,6 +1,8 @@
 #!/usr/bin/env amm
 import ammonite.ops._
 
+import scala.util.Try
+
 case class Version(major: Int, minor: Int, patch: Int) {
   def components: Seq[Int] = Seq(major, minor, patch)
 
@@ -78,9 +80,9 @@ def main(version: String): Unit = {
     System.exit(-1)
   }
 
-  val previousTag = %%('git, Seq("describe", "--abbrev=0"))(pwd).out.lines.headOption.getOrElse(%%('git, Seq("rev-list", "HEAD"))(pwd).out.lines.last)
+  val previousTagOpt = Try(%%('git, Seq("describe", "--abbrev=0"))(pwd).out.lines.headOption.getOrElse(%%('git, Seq("rev-list", "HEAD"))(pwd).out.lines.last)).toOption
 
-  val log = %%('git, Seq("log", s"${previousTag}..HEAD"))(pwd).out.string
+  val log = %%('git, Seq("log") ++  previousTagOpt.map(previousTag => s"${previousTag}..HEAD"))(pwd).out.string
 
   val releaseNotes: String = interactiveEditor(s"# Release ${nextVersion}\n\n" + log).getOrElse({
     System.err.println("Release notes were not saved. Aborting.")
