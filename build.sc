@@ -8,7 +8,7 @@ import mill.scalalib.scalafmt.ScalafmtModule
 object core extends SbtModule with PublishModule with ScalafmtModule {
   def scalaVersion = "2.13.1"
 
-  def publishVersion = "0.2.1"
+  def publishVersion = "0.0.1"
 
   def pomSettings = PomSettings(
     description = "A Scala Representation for Graphviz files",
@@ -26,9 +26,6 @@ object core extends SbtModule with PublishModule with ScalafmtModule {
 
   override def ivyDeps: Target[Loose.Agg[Dep]] =
     Agg(
-      ivy"org.scala-lang.modules::scala-xml::1.2.0",
-      ivy"org.rogach::scallop:3.3.2",
-      ivy"com.lihaoyi::upickle:0.9.5",
       ivy"org.scala-lang.modules::scala-xml:1.3.0",
       ivy"com.lihaoyi::os-lib:0.7.1",
     )
