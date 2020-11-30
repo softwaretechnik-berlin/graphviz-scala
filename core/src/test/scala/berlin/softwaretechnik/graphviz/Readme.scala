@@ -60,7 +60,5 @@ object Readme {
       )
     os.perms.set(readmePath, PermSet.fromSet(Set(GROUP_READ, OWNER_READ, OTHERS_READ ).asJava))
   }
-
-
 }
 
