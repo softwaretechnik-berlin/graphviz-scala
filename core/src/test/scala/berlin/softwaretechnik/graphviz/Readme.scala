@@ -21,6 +21,7 @@ object Readme {
 
     os.write.over(readmePath,
     s"""# Scala Library to Produce Graphviz dot-Files
+      |[![Maven Central](https://maven-badges.herokuapp.com/maven-central/berlin.softwaretechnik/graphviz-scala_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/berlin.softwaretechnik/graphviz-scala_2.13)
       |
       |This library provides a (somewhat) type safe interface into the
       |[Graphviz DOT language](https://graphviz.org/doc/info/lang.html). It provides a case class representation
