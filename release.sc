@@ -91,10 +91,11 @@ def main(version: String): Unit = {
   })
 
   // Update Versions
-  transform(pwd / "README.md", _.replaceAll(
+  transform(pwd / "core" / "src" / "test" / "scala" / "berlin" / "softwaretechnik" / "graphviz" / "Readme.scala", _.replaceAll(
     previousVersion.toString, // the dots in the version are not escaped, but it's fine for now.
     nextVersion.toString
   ))
+
   transform(pwd / "build.sc", _.replaceAll(
     s"""publishVersion = "$previousVersion""",  // the dots in the version are not escaped, but it's fine for now.
     s"""publishVersion = "$nextVersion"""
