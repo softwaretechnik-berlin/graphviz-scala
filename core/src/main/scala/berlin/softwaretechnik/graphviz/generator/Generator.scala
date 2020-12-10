@@ -5,6 +5,7 @@ import java.nio.file.{Files, Path, Paths}
 
 import berlin.softwaretechnik.graphviz.generator.Strings._
 import berlin.softwaretechnik.graphviz.generator.TypeMapping.{lookupType, typeMapping}
+import os.pwd
 
 
 object TypeMapping {
@@ -54,12 +55,48 @@ case class AttributesCaseClass(
   def className: String = Strings.capitalize(name) + "Attributes"
 
   def packagePath: Path = Paths.get(packageName.replaceAll("\\.", "/"))
+  def javaPackageName = packageName
+  def javaPackagePath = Paths.get(javaPackageName.replaceAll("\\.", "/"))
 
-  def write(srcDir: Path): Unit = {
+  def writeScala(srcDir: Path): AttributesCaseClass = {
     Files.write(
       srcDir.resolve(packagePath).resolve(s"${className}.scala"),
       renderAttributesType.getBytes(StandardCharsets.UTF_8)
     )
+    this
+  }
+
+  def writeJava(srcDir: Path): AttributesCaseClass = {
+    Files.createDirectories(srcDir.resolve(javaPackagePath))
+    Files.write(
+      srcDir.resolve(javaPackagePath).resolve(s"${className}.java"),
+      renderAttributesTypeJava.getBytes(StandardCharsets.UTF_8)
+    )
+    this
+  }
+
+  def renderAttributesTypeJava = {
+    s"package ${javaPackageName};\n" +
+      s"""import java.util.Map;
+         |import java.util.stream.Collectors;
+         |public class ${className} {\n""".stripMargin +
+      indent(attributes.map(a =>
+        s"""/**
+           |${indent(unindent(a.doc), "  * ")}
+           |  */
+           |${lookupType(a.typ)} ${a.name};""".stripMargin).mkString(
+        "\n\n")
+      ) + "\n\n" +
+      indent("public Map<String, Object> toAttributeMap() { \n" +
+        indent("return Map.ofEntries(\n" +
+    indent(attributes.map(a =>
+          s"""Map.entry("${a.name}", ${
+            a.name
+          })""").mkString(",\n")
+      ) + ").entrySet().stream()\n" +
+          "    .filter(entry -> entry.getValue() != null)\n" +
+          "    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));\n") + "\n}\n") +
+      "}\n"
   }
 
 
@@ -90,26 +127,31 @@ object Generator {
     val schema = new Schema("doc_schema_attributes.xml")
 
     val srcDir = Paths.get("./core/src/main/scala")
+    val javaSrcDir = Paths.get("./java/src/main/java")
 
     AttributesCaseClass(
       "node", "berlin.softwaretechnik.graphviz.attributes",
       schema("node").attributes
-    ).write(srcDir)
+    ).writeScala(srcDir)
+      .writeJava(javaSrcDir)
 
     AttributesCaseClass(
       "edge", "berlin.softwaretechnik.graphviz.attributes",
       schema("edge").attributes
-    ).write(srcDir)
+    ).writeScala(srcDir)
+      .writeJava(javaSrcDir)
 
     AttributesCaseClass(
       "graph", "berlin.softwaretechnik.graphviz.attributes",
       schema("graph").attributes
-    ).write(srcDir)
+    ).writeScala(srcDir)
+      .writeJava(javaSrcDir)
 
     AttributesCaseClass(
       "subgraph", "berlin.softwaretechnik.graphviz.attributes",
       schema("cluster").attributes ++ schema("subgraph").attributes
-    ).write(srcDir)
+    ).writeScala(srcDir)
+      .writeJava(javaSrcDir)
 
     // <xsd:complexType name="edge">
     val packageDir = Paths.get("./core/src/main/scala/berlin/softwaretechnik/graphviz/attributes")
