@@ -9,16 +9,19 @@ import berlin.softwaretechnik.graphviz.generator.Strings.indent
 trait Renderable {
   def render: String
 
-  def render(attributeMap: Seq[(String, Any)]): String = {
-    attributeMap.map { case (k, v) => s"""${k} = ${renderValue(v)};""" }.mkString("\n") + "\n"
+  def render(attributeMap: Seq[(String, Any)]): Seq[String] = {
+    attributeMap.map { case (k, v) => s"""${k} = ${renderValue(v)};""" }
   }
 
   def renderWithBrackets(attributeMap: Seq[(String, Any)]): String = {
     if (attributeMap.isEmpty) {
       return ""
     }
-
-    " [\n" + indent(render(attributeMap)) + "\n]"
+    val preRendered = render(attributeMap)
+    if (preRendered.mkString("").length < 60)
+      " [" + preRendered.mkString(" ") + "]"
+    else
+      " [\n" + indent(preRendered.mkString("\n") + "\n") + "\n]"
   }
 
   private def renderValue(v: Any) = {
@@ -46,14 +49,14 @@ case class Graph(
     s"""digraph ${id.getOrElse("")} {\n""" +
       indent(
         (if(nodeDefaults.toAttributeMap().nonEmpty)
-          "node " + renderWithBrackets(nodeDefaults.toAttributeMap()) + ";\n"
+          "node" + renderWithBrackets(nodeDefaults.toAttributeMap()) + ";\n"
         else
           "") +
           (if(edgeDefaults.toAttributeMap().nonEmpty)
-            "edge " + renderWithBrackets(edgeDefaults.toAttributeMap()) + ";\n"
+            "edge" + renderWithBrackets(edgeDefaults.toAttributeMap()) + ";\n"
           else
             "") +
-        render(attributeMap) +
+        render(attributeMap).mkString("\n") + "\n" +
           elements.map(_.render).mkString("\n")
       ) +
       "\n}\n"
@@ -81,7 +84,7 @@ case class SubGraph(
             "edge " + renderWithBrackets(edgeDefaults.toAttributeMap()) + ";\n"
           else
             "") +
-        render(attributes.toAttributeMap()) +
+        render(attributes.toAttributeMap()).mkString("\n") + "\n" +
           elements.map(_.render).mkString("\n")
       ) +
       "\n}\n"
