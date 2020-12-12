@@ -20,6 +20,8 @@ object  GraphExample {
             Seq(
               Seq(Cell(TextList(Seq(PlainString("Good "), StyleTag("I", PlainString("bye!")))))),
               Seq(Cell(TableCellAttributes(align = Align.Left), StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
+              Seq(Cell(TableCellAttributes(align = Align.Left), b(u("Hello!"),"No underline."))),
+              Seq(Cell(TableCellAttributes(align = Align.Left), textAttr(bold = true, color = Color("#00D000"))("Does this work?"))),
             )))),
         Node("C"),
         SubGraph(attributes = SubgraphAttributes(rank = same), elements = Seq(

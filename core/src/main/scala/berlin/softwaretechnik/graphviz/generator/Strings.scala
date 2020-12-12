@@ -19,4 +19,7 @@ object Strings {
 
   def indent(block: String, indent: String = "  "): String = block.linesIterator.map(indent + _).mkString("\n")
 
+
+  def quote(s: String): String = "\"" + s + "\""
+
 }
