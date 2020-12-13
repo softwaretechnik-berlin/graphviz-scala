@@ -37,16 +37,16 @@ object Readme {
       |${example}
       |~~~
       |
-      |This will yield the following output:
+      |This will yield the following output (Click for dot-source)  :
       |
       |[![](doc/test.svg)](doc/test.dot)
       |
       |# TODO
       |
-      |* [ ] Deploy to maven central.
+      |* [X] Deploy to maven central.
       |* [X] Support for HTML like labels
-      |    * [ ] Support font attributes
-      |    * [ ] Come up with a nicer model for formatted
+      |    * [X] Support font attributes
+      |    * [X] Come up with a nicer model for formatted
       |          text.
       |* [X] Fix various attribute types e.g. ArrowHead
       |* [ ] Proper String escaping
