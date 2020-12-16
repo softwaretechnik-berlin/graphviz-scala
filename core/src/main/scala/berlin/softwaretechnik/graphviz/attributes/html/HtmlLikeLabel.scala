@@ -13,10 +13,6 @@ case class TextList(items: Seq[TextItem]) extends TextItem {
 
 trait TextItem extends HtmlLikeLabel with Text
 
-case class PlainString(s: String) extends TextItem {
-  override def toString: String = s
-}
-
 case class RichString(textAttributes: TextAttributes, textItem: TextItem) extends TextItem {
   override def toString: String = textAttributes.wrap(textItem).toString
 }

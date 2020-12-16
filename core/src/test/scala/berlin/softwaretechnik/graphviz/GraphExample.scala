@@ -18,14 +18,14 @@ object  GraphExample {
           label = Table(
             TableAttributes(border = 0, cellSpacing = 0, cellBorder = 1, cellPadding = 3),
             Seq(
-              Seq(Cell(TextList(Seq(PlainString("Good "), StyleTag("I", PlainString("bye!")))))),
-              Seq(Cell(TableCellAttributes(align = Align.Left), StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
+              Seq(Cell(TextList(Seq(Plain("Good "), StyleTag("I", Plain("bye!")))))),
+              Seq(Cell(TableCellAttributes(align = Align.Left), StyleTag("B", StyleTag("U", Plain("Hello!"))))),
               Seq(Cell(TableCellAttributes(align = Align.Left), b(u("Hello!"),"No underline."))),
               Seq(Cell(TableCellAttributes(align = Align.Left), textAttr(bold = true, color = Color("#00D000"))("Does this work?"))),
             )))),
         Node("C"),
         SubGraph(attributes = SubgraphAttributes(rank = same), elements = Seq(
-          Node("B", NodeAttributes(shape = box)),
+          Node("B", NodeAttributes(shape = box, label = new Plain("Two\nLines"))),
           Node("D", NodeAttributes(color = Color("#FF0000"))),
         )),
         Edge("A", "B", EdgeAttributes(label = new Plain("This is a label"))),

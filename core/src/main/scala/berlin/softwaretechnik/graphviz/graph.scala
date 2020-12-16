@@ -1,10 +1,9 @@
 package berlin.softwaretechnik.graphviz
 
-import berlin.softwaretechnik.graphviz.attributes.{Color, EdgeAttributes, GraphAttributes, NodeAttributes, Plain, SubgraphAttributes}
-import berlin.softwaretechnik.graphviz.attributes.RankType.same
-import berlin.softwaretechnik.graphviz.attributes.Shape.{box, none}
-import berlin.softwaretechnik.graphviz.attributes.html.{Align, Cell, HtmlLikeLabel, PlainString, StyleTag, Table, TableAttributes, TableCellAttributes, TextList}
+import berlin.softwaretechnik.graphviz.attributes.html.HtmlLikeLabel
+import berlin.softwaretechnik.graphviz.attributes._
 import berlin.softwaretechnik.graphviz.generator.Strings.indent
+import org.apache.commons.text.StringEscapeUtils
 
 trait Renderable {
   def render: String
@@ -24,11 +23,13 @@ trait Renderable {
       " [\n" + indent(preRendered.mkString("\n") + "\n") + "\n]"
   }
 
+  private def escape(s: String): String = StringEscapeUtils.escapeJava(s)
+
   private def renderValue(v: Any) = {
     v match {
       // Todo: We want to do proper string escaping:
-      case s: String => "\"" + s + "\""
-      case p: Plain => "\"" + p.toString + "\""
+      case s: String => "\"" + escape(s) + "\""
+      case p: Plain => "\"" + escape(p.toString) + "\""
       case h: HtmlLikeLabel => "<" + h.toString + ">"
       // Todo We need support for HTML like labels
       case a: Any => a.toString

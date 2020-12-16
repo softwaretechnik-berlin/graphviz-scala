@@ -43,5 +43,5 @@ package object html {
     TextList(textItem)
   )
 
-  implicit def plain(text: String): PlainString = PlainString(text)
+  implicit def plain(text: String): Plain = new Plain(text)
 }

@@ -1,5 +1,7 @@
 package berlin.softwaretechnik.graphviz.attributes
 
+import berlin.softwaretechnik.graphviz.attributes.html.TextItem
+
 /** <a href="https://graphviz.org/doc/info/attrs.html#k:arrowType">ArrowType</a> */
 sealed trait ArrowType {}
 
@@ -70,7 +72,7 @@ sealed trait PortPosition {}
 
 trait LabelString {}
 
-class Plain(value: String) extends LabelString {
+case class Plain(value: String) extends LabelString with TextItem {
   override def toString: String = value
 }
 

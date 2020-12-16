@@ -15,7 +15,7 @@ digraph  {
   C;
   subgraph  {
     rank = same;
-    B [shape = box;];
+    B [label = "Two\nLines"; shape = box;];
     D [color = "#FF0000";];
   }
   

@@ -37,26 +37,32 @@ object Readme {
       |${example}
       |~~~
       |
-      |This will yield the following output (Click for dot-source)  :
+      |This will yield the following output (Click for dot-source):
       |
       |[![](doc/test.svg)](doc/test.dot)
       |
       |# TODO
+      |* [ ] Implement basic validation.
+      |* [ ] Implement basic graph transformations. 
+      |* [ ] Implement more missing attribute types.
+      |* [ ] Some attribute grouping mechanism that
+      |      works across different kinds of attributes.
+      |* [ ] Separate code that is used to generate code
+      |      from the graphviz schema from the actual
+      |      library.      |
+      |* [ ] Add support for node port short cut syntax
       |
+      |Done
+      |----
       |* [X] Deploy to maven central.
       |* [X] Support for HTML like labels
       |    * [X] Support font attributes
       |    * [X] Come up with a nicer model for formatted
       |          text.
       |* [X] Fix various attribute types e.g. ArrowHead
-      |* [ ] Proper String escaping
-      |* [ ] Add support for node port short cut syntax
-      |* [ ] Separate code that is used to generate code
-      |      from the graphviz schema from the actual
-      |      library.
+      |* [X] Proper String escaping
       |* [X] Convert example into an actual test case.
-      |* [ ] Some attribute grouping mechanism that
-      |      works across different kinds of attributes.
+      |
       |      |""".stripMargin,
       )
     os.perms.set(readmePath, PermSet.fromSet(Set(GROUP_READ, OWNER_READ, OTHERS_READ ).asJava))

@@ -22,14 +22,14 @@ val dotString = Graph(
       label = Table(
         TableAttributes(border = 0, cellSpacing = 0, cellBorder = 1, cellPadding = 3),
         Seq(
-          Seq(Cell(TextList(Seq(PlainString("Good "), StyleTag("I", PlainString("bye!")))))),
-          Seq(Cell(TableCellAttributes(align = Align.Left), StyleTag("B", StyleTag("U", PlainString("Hello!"))))),
+          Seq(Cell(TextList(Seq(Plain("Good "), StyleTag("I", Plain("bye!")))))),
+          Seq(Cell(TableCellAttributes(align = Align.Left), StyleTag("B", StyleTag("U", Plain("Hello!"))))),
           Seq(Cell(TableCellAttributes(align = Align.Left), b(u("Hello!"),"No underline."))),
           Seq(Cell(TableCellAttributes(align = Align.Left), textAttr(bold = true, color = Color("#00D000"))("Does this work?"))),
         )))),
     Node("C"),
     SubGraph(attributes = SubgraphAttributes(rank = same), elements = Seq(
-      Node("B", NodeAttributes(shape = box)),
+      Node("B", NodeAttributes(shape = box, label = new Plain("Two\nLines"))),
       Node("D", NodeAttributes(color = Color("#FF0000"))),
     )),
     Edge("A", "B", EdgeAttributes(label = new Plain("This is a label"))),
@@ -40,24 +40,30 @@ val dotString = Graph(
 ).render
 ~~~
 
-This will yield the following output:
+This will yield the following output (Click for dot-source):
 
 [![](doc/test.svg)](doc/test.dot)
 
 # TODO
+* [ ] Implement basic validation.
+* [ ] Implement basic graph transformations. 
+* [ ] Implement more missing attribute types.
+* [ ] Some attribute grouping mechanism that
+      works across different kinds of attributes.
+* [ ] Separate code that is used to generate code
+      from the graphviz schema from the actual
+      library.      |
+* [ ] Add support for node port short cut syntax
 
+Done
+----
 * [X] Deploy to maven central.
 * [X] Support for HTML like labels
     * [X] Support font attributes
     * [X] Come up with a nicer model for formatted
           text.
 * [X] Fix various attribute types e.g. ArrowHead
-* [ ] Proper String escaping
-* [ ] Add support for node port short cut syntax
-* [ ] Separate code that is used to generate code
-      from the graphviz schema from the actual
-      library.
+* [X] Proper String escaping
 * [X] Convert example into an actual test case.
-* [ ] Some attribute grouping mechanism that
-      works across different kinds of attributes.
+
       |
