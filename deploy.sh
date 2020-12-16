@@ -29,5 +29,11 @@ set -o pipefail
 
 mill core.publish \
     --sonatypeCreds $SONATYPE_USER:$SONATYPE_PASSWORD \
-    --gpgArgs --passphrase=$GPG_PASSPHRASE,--batch,--yes,-a,-b,--default-key=$GPG_KEY,--pinentry-mode=loopback \
+    --gpgArgs --passphrase=$GPG_PASSPHRASE \
+    --gpgArgs --batch \
+    --gpgArgs --yes \
+    --gpgArgs -a \
+    --gpgArgs -b \
+    --gpgArgs --default-key=$GPG_KEY \
+    --gpgArgs --pinentry-mode=loopback \
     --release true
