@@ -4,7 +4,7 @@ digraph  {
   fontname = "Helvetica";
   fontsize = 16.0;
   A [
-    label = <<TABLE border="0" cellBorder="1" cellPadding="3" cellSpacing="0">
+    label = <<TABLE border="0" cellBorder="1" cellPadding="3" cellSpacing="0" color="gray">
       <TR><TD >Good <I>bye!</I></TD></TR>
       <TR><TD align="Left"><B><U>Hello!</U></B></TD></TR>
       <TR><TD align="Left"><B><U>Hello!</U>No underline.</B></TD></TR>

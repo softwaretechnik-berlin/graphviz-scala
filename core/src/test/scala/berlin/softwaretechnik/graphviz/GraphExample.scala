@@ -16,7 +16,7 @@ object  GraphExample {
         Node("A", NodeAttributes(
           shape = none,
           label = Table(
-            TableAttributes(border = 0, cellSpacing = 0, cellBorder = 1, cellPadding = 3),
+            TableAttributes(color = Color("gray"), border = 0, cellSpacing = 0, cellBorder = 1, cellPadding = 3),
             Seq(
               Seq(Cell(TextList(Seq(Plain("Good "), StyleTag("I", Plain("bye!")))))),
               Seq(Cell(TableCellAttributes(align = Align.Left), StyleTag("B", StyleTag("U", Plain("Hello!"))))),

@@ -103,7 +103,8 @@ case class FontTagAttributes(color: Color = null, face: String = null, pointSize
 
 object TableHelpers {
   def renderAttributes(attributes: Seq[(String, Any)]): String =
-    attributes.map{case (k, v) => s"""${k}="${v}""""}.mkString(" ")
+    attributes.map{case (k -> Color(rep)) => k -> rep; case x => x}
+      .map{case (k, v) => s"""${k}="${v}""""}.mkString(" ")
 }
 
 case class Table(attributes: TableAttributes = html.TableAttributes(), rows: Seq[Seq[Cell]]) extends HtmlLikeLabel {

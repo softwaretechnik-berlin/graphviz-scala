@@ -12,15 +12,15 @@
 <!-- A -->
 <g id="node1" class="node">
 <title>A</title>
-<polygon fill="none" stroke="#000000" points="8,-253.7696 8,-279.7696 164,-279.7696 164,-253.7696 8,-253.7696"/>
+<polygon fill="none" stroke="#c0c0c0" points="8,-253.7696 8,-279.7696 164,-279.7696 164,-253.7696 8,-253.7696"/>
 <text text-anchor="start" x="48.5" y="-263.9696" font-family="Helvetica,sans-Serif" font-size="16.00" fill="#000000">Good </text>
 <text text-anchor="start" x="92.5" y="-263.9696" font-family="Helvetica,sans-Serif" font-style="italic" font-size="16.00" fill="#000000">bye!</text>
-<polygon fill="none" stroke="#000000" points="8,-227.7696 8,-253.7696 164,-253.7696 164,-227.7696 8,-227.7696"/>
+<polygon fill="none" stroke="#c0c0c0" points="8,-227.7696 8,-253.7696 164,-253.7696 164,-227.7696 8,-227.7696"/>
 <text text-anchor="start" x="12" y="-237.9696" font-family="Helvetica,sans-Serif" font-weight="bold" text-decoration="underline" font-size="16.00" fill="#000000">Hello!</text>
-<polygon fill="none" stroke="#000000" points="8,-201.7696 8,-227.7696 164,-227.7696 164,-201.7696 8,-201.7696"/>
+<polygon fill="none" stroke="#c0c0c0" points="8,-201.7696 8,-227.7696 164,-227.7696 164,-201.7696 8,-201.7696"/>
 <text text-anchor="start" x="12" y="-211.9696" font-family="Helvetica,sans-Serif" font-weight="bold" text-decoration="underline" font-size="16.00" fill="#000000">Hello!</text>
 <text text-anchor="start" x="57" y="-211.9696" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00" fill="#000000">No underline.</text>
-<polygon fill="none" stroke="#000000" points="8,-175.7696 8,-201.7696 164,-201.7696 164,-175.7696 8,-175.7696"/>
+<polygon fill="none" stroke="#c0c0c0" points="8,-175.7696 8,-201.7696 164,-201.7696 164,-175.7696 8,-175.7696"/>
 <text text-anchor="start" x="12" y="-185.9696" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00" fill="#00d000">Does this work?</text>
 </g>
 <!-- C -->
