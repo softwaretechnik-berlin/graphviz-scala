@@ -115,9 +115,17 @@ object Style {
   //  case object rounded extends Style
 }
 
-sealed trait PointF {}
+case class PointF(x: Double, y: Double) {
+  override def toString: String = f"${x},${y}"
+}
 
-sealed trait PointFList {}
+object PointF {
+  def apply(l: Double): PointF = PointF(l, l)
+}
+
+case class PointFList(vertices: Seq[PointF]) {
+  override def toString: String = vertices.mkString(" ")
+}
 
 sealed trait LayerList {}
 
