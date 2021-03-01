@@ -116,7 +116,7 @@ object Style {
 }
 
 case class PointF(x: Double, y: Double) {
-  override def toString: String = f"${x},${y}"
+  override def toString: String = f""""${x},${y}""""
 }
 
 object PointF {
