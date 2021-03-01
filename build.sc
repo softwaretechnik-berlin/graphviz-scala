@@ -8,7 +8,7 @@ import mill.scalalib.scalafmt.ScalafmtModule
 object core extends SbtModule with PublishModule with ScalafmtModule {
   def scalaVersion = "2.13.1"
 
-  def publishVersion = "0.0.5"
+  def publishVersion = "0.0.6"
 
   def pomSettings = PomSettings(
     description = "A Scala Representation for Graphviz files",
