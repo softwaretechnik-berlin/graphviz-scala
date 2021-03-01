@@ -35,7 +35,7 @@ val dotString = Graph(
     Edge("A", "B", EdgeAttributes(label = new Plain("This is a label"))),
     Edge("A", "C"),
     Edge("B", "C"),
-    Edge("B", "D"),
+    Edge("B", "D", EdgeAttributes(style = dashed)),
   )
 ).render
 ~~~

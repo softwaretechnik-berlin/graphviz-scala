@@ -2,6 +2,7 @@ package berlin.softwaretechnik.graphviz
 
 import berlin.softwaretechnik.graphviz.attributes.RankType.same
 import berlin.softwaretechnik.graphviz.attributes.Shape.{box, none}
+import berlin.softwaretechnik.graphviz.attributes.Style.dashed
 import berlin.softwaretechnik.graphviz.attributes._
 import berlin.softwaretechnik.graphviz.attributes.html._
 
@@ -31,7 +32,7 @@ object  GraphExample {
         Edge("A", "B", EdgeAttributes(label = new Plain("This is a label"))),
         Edge("A", "C"),
         Edge("B", "C"),
-        Edge("B", "D"),
+        Edge("B", "D", EdgeAttributes(style = dashed)),
       )
     ).render
     //snap

@@ -56,10 +56,10 @@ case class Color(rep: String) extends ColorOrList {
 case class ColorList(Seq: Color) extends ColorOrList
 
 /**
- * The rectangle llx,lly,urx,ury gives the coordinates, in
- * points, of the lower-left corner (llx,lly) and the
- * upper-right corner (urx,ury).
- */
+  * The rectangle llx,lly,urx,ury gives the coordinates, in
+  * points, of the lower-left corner (llx,lly) and the
+  * upper-right corner (urx,ury).
+  */
 case class Rect(llx: Double, lly: Double, urx: Double, ury: Double) {
   override def toString: String = s"$llx,$lly,$urx,$ury"
 }
@@ -79,6 +79,41 @@ case class Plain(value: String) extends LabelString with TextItem {
 sealed trait SplineType {}
 
 sealed trait Style {}
+
+object Style {
+
+  case object dashed extends Style
+
+  case object dotted extends Style
+
+  case object solid extends Style
+
+  case object invis extends Style
+
+  case object bold extends Style
+
+  //For edges only:
+
+  case object tapered extends Style
+
+  //For nodes only:
+
+  case object filled extends Style
+
+  case object striped extends Style
+
+  case object wedged extends Style
+
+  case object diagonals extends Style
+
+  case object rounded extends Style
+
+  //For clusters:
+
+  //    case object filled extends Style
+  //  case object striped extends Style
+  //  case object rounded extends Style
+}
 
 sealed trait PointF {}
 

@@ -22,5 +22,5 @@ digraph  {
   A -> B [label = "This is a label";];
   A -> C;
   B -> C;
-  B -> D;
+  B -> D [style = dashed;];
 }
